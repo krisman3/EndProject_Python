@@ -33,21 +33,47 @@ def player_guess():
                 continue
             if guess.isdigit():
                 if lower_range <= int(guess) <= upper_range:
-                    return guess
+                    return int(guess)
         except ValueError:
             # Hard-coded the values for easier implementation
             print(f"Please enter an integer from {lower_range} to {upper_range}!")
 
 
-def guess_check(player_num, actual_num):
+def guess_check(player_num: int, actual_num: int):
     if player_num == actual_num:
         return True
     else:
         return False
 
 
-def lower_or_higher(player_num, actual_num):
+def lower_or_higher(player_num: int, actual_num: int):
     if player_num < actual_num:
-        return "Higher!"
-    else:
-        return "Lower!"
+        return "Go higher!"
+    elif player_num > actual_num:
+        return "Go lower!"
+
+
+### Main logic of the game: ###
+
+# Initializing the attempts counter:
+count = 0
+
+# Generating a random number to guess:
+rand_num = random_number()
+
+# Player choice is entered here:
+pl_choice = player_guess()
+
+# Numbers are checked:
+check_game = guess_check(pl_choice, rand_num)
+if check_game:
+    print(f"Congratulations! You won. It took you {count} tries.")
+# If they're not equal, player gets feedback
+else:
+    count += 1
+    print(lower_or_higher(pl_choice, rand_num))
+
+
+
+
+
