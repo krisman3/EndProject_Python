@@ -31,11 +31,20 @@ person1 = Person("Kristiyan", "Iliev", 28)
 person2 = Person("Maria", "Eneva", 25)
 person3 = Person("Ivan", "Koev", 29)
 
+### Tests for the task ###
+
+"""
 people = []
-management = PersonManager(people)
-
-management.add_person(person1)
-management.add_person(person2)
-management.add_person(person3)
-
-print(management)
+# management = PersonManager(people)
+# 
+# management.add_person(person1)
+# management.add_person(person2)
+# management.add_person(person3)
+# management.add_person(person2)
+# 
+# print(management)
+# 
+# management.remove_person('Koev')
+# print()
+# print(management)
+"""
