@@ -5,6 +5,9 @@ class Person:
         self.surname = surname
         self.age = age
 
+    def __str__(self):
+        print(f"{self.name} {self.surname} - {self.age} years old")
+
 
 class PersonManager:
 
@@ -15,7 +18,7 @@ class PersonManager:
         pass
 
     def remove_person(self, people_list):
-    # Must be able to remove a person by name or surname
+        # Must be able to remove a person by name or surname
         pass
 
     def __str__(self):
