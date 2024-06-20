@@ -3,9 +3,6 @@ import random
 
 # Guess the number
 
-lower_range = 1
-upper_range = 10
-
 
 def random_number():
     return random.randint(1, 10)
@@ -21,22 +18,19 @@ def player_name():
 
 
 def player_guess():
-    global lower_range, upper_range
+    lower_range = 1
+    upper_range = 10
     while True:
         try:
-            guess = input("Your guess: ")
+            guess = int(input(f"Your guess (from {lower_range} to {upper_range}): "))
             if guess == '':
                 print("This field cannot be empty!")
                 continue
-            elif not guess.isdigit():
-                print(f"The guess must be an integer from {lower_range} to {upper_range}!")
-                continue
-            if guess.isdigit():
-                if lower_range <= int(guess) <= upper_range:
-                    return int(guess)
+            return guess
         except ValueError:
-            # Hard-coded the values for easier implementation
             print(f"Please enter an integer from {lower_range} to {upper_range}!")
+            print('\n')
+            continue
 
 
 def guess_check(player_num: int, actual_num: int):
@@ -56,24 +50,21 @@ def lower_or_higher(player_num: int, actual_num: int):
 ### Main logic of the game: ###
 
 # Initializing the attempts counter:
-count = 0
+count = 1
 
 # Generating a random number to guess:
 rand_num = random_number()
+while True:
 
-# Player choice is entered here:
-pl_choice = player_guess()
+    # Player choice is entered here:
+    pl_choice = player_guess()
 
-# Numbers are checked:
-check_game = guess_check(pl_choice, rand_num)
-if check_game:
-    print(f"Congratulations! You won. It took you {count} tries.")
-# If they're not equal, player gets feedback
-else:
-    count += 1
-    print(lower_or_higher(pl_choice, rand_num))
-
-
-
-
-
+    # Numbers are checked:
+    check_game = guess_check(pl_choice, rand_num)
+    if check_game:
+        print(f"Congratulations! You won. It took you {count} tries.")
+        break
+    # If they're not equal, player gets feedback
+    else:
+        count += 1
+        print(lower_or_higher(pl_choice, rand_num))
