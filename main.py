@@ -39,3 +39,15 @@ def player_guess():
             print(f"Please enter an integer from {lower_range} to {upper_range}!")
 
 
+def guess_check(player_num, actual_num):
+    if player_num == actual_num:
+        return True
+    else:
+        return False
+
+
+def lower_or_higher(player_num, actual_num):
+    if player_num < actual_num:
+        return "Higher!"
+    else:
+        return "Lower!"
