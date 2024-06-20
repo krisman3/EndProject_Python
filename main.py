@@ -12,7 +12,7 @@ class Person:
 class PersonManager:
 
     def __init__(self, people_list):
-        self.people_list = list(people_list)
+        self.people_list = people_list
 
     def add_person(self, person: Person):
         self.people_list.append(person)
@@ -24,11 +24,18 @@ class PersonManager:
                 break  # This will remove only the first match.
 
     def __str__(self):
-        for person in self.people_list:
-            yield person
-    # TO continue implementation on how to print the list
+        return '\n'.join(str(person) for person in self.people_list)
 
 
 person1 = Person("Kristiyan", "Iliev", 28)
+person2 = Person("Maria", "Eneva", 25)
+person3 = Person("Ivan", "Koev", 29)
 
-print(person1)
+people = []
+management = PersonManager(people)
+
+management.add_person(person1)
+management.add_person(person2)
+management.add_person(person3)
+
+print(management)
