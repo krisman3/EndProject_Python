@@ -1,5 +1,7 @@
 ### Task 2 ###
 import random
+import sys
+
 
 # Guess the number
 
@@ -46,25 +48,41 @@ def lower_or_higher(player_num: int, actual_num: int):
     elif player_num > actual_num:
         return "Go lower!"
 
+def continue_playing():
+    while True:
+        game_on = input("Would you like to play again? (Y/N)")
+        if game_on.lower().strip() == 'y':
+            print('\n' * 50)
+            return True
+        elif game_on.lower().strip() == 'n':
+            sys.exit()
+        else:
+            print("Invalid input. Please select Y or N.")
+            continue
+
 
 ### Main logic of the game: ###
 
 # Initializing the attempts counter:
-count = 1
-
-# Generating a random number to guess:
-rand_num = random_number()
 while True:
+    count = 1
 
-    # Player choice is entered here:
-    pl_choice = player_guess()
+    # Generating a random number to guess:
+    rand_num = random_number()
+    while True:
 
-    # Numbers are checked:
-    check_game = guess_check(pl_choice, rand_num)
-    if check_game:
-        print(f"Congratulations! You won. It took you {count} tries.")
-        break
-    # If they're not equal, player gets feedback
-    else:
-        count += 1
-        print(lower_or_higher(pl_choice, rand_num))
+        # Player choice is entered here:
+        pl_choice = player_guess()
+
+        # Numbers are checked:
+        check_game = guess_check(pl_choice, rand_num)
+        if check_game:
+            print(f"Congratulations! You won. It took you {count} tries.")
+            break
+        # If they're not equal, player gets feedback
+        else:
+            count += 1
+            print(lower_or_higher(pl_choice, rand_num))
+
+    # Continue playing prompt:
+    continue_playing()
