@@ -43,6 +43,10 @@ class OperatingRoom:
             self.size -= 1
             print(f"Patient {released_patient} released.")
 
+    def current_patients(self):
+        patients = []
+        current = self.head
+        for patient in self.
     def is_empty(self):
         return self.head is None
 
