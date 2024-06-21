@@ -37,7 +37,11 @@ class OperatingRoom:
             print("No patients to release.")
             return
         else:
+            # Keep the released patient's name for the output:
+            released_patient = self.head.data
             self.head = self.head.next
+            self.size -= 1
+            print(f"Patient {released_patient} released.")
 
     def is_empty(self):
         return self.head is None
