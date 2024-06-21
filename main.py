@@ -18,7 +18,7 @@ class OperatingRoom:
 
     def admit_patient(self, patient):
         if self.size >= self.capacity:
-            print("The operating room is currently full!")
+            print("No available beds.")
             return
 
         new_node = self.Node(patient)
@@ -32,5 +32,13 @@ class OperatingRoom:
         self.size += 1
         print(f"Patient {patient.name} admitted.")
 
+    def release_patient(self, patient):
+        if self.head is None:
+            print("No patients to release.")
+            return
+        else:
+            self.head = self.head.next
+
     def is_empty(self):
         return self.head is None
+
