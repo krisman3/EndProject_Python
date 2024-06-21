@@ -33,6 +33,4 @@ class OperatingRoom:
         print(f"Patient {patient.name} admitted.")
 
     def is_empty(self):
-        if self is None and self.next is None:
-            return True
-        return False
+        return self.head is None
