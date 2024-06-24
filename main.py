@@ -12,7 +12,7 @@ class OperatingRoom:
             self.next = None
 
     def __init__(self, capacity):
-        self.capacity = capacity
+        self.capacity = int(capacity)
         self.head = None
         self.size = 0
 
@@ -46,7 +46,32 @@ class OperatingRoom:
     def current_patients(self):
         patients = []
         current = self.head
-        for patient in self.
+        while current is not None:
+            patients.append(current.data.name)
+            current = current.next
+        return patients
+
     def is_empty(self):
         return self.head is None
 
+    def is_full(self):
+        patients = []
+        current = self.head
+        while current is not None:
+            patients.append(current.data.name)
+            current = current.next
+        return len(patients) == self.capacity
+
+
+patient1 = Patient("Ivan")
+patient2 = Patient("Kolio")
+patient3 = Patient("Mario")
+
+op_room = OperatingRoom(3)
+
+op_room.admit_patient(patient1)
+op_room.admit_patient(patient2)
+# op_room.admit_patient(patient3)
+
+print(op_room.current_patients())
+print(op_room.is_full())
