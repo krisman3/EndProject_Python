@@ -32,7 +32,7 @@ class OperatingRoom:
         self.size += 1
         print(f"Patient {patient.name} admitted.")
 
-    def release_patient(self, patient):
+    def release_patient(self):
         if self.head is None:
             print("No patients to release.")
             return
@@ -76,13 +76,16 @@ op_room.admit_patient(patient2)
 op_room.admit_patient(patient3)
 
 print(f"Initial patients: {op_room.current_patients()}")
-op_room.release_patient(patient3)
+op_room.release_patient()
+print()
+print(f"Updated Patients: {op_room.current_patients()}")
+op_room.release_patient()
 print()
 print(f"Updated Patients: {op_room.current_patients()}")
 
 
 print(op_room.current_patients())
 print(op_room.is_full())
-
 """
+
 
