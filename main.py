@@ -41,7 +41,7 @@ class OperatingRoom:
             released_patient = self.head.data
             self.head = self.head.next
             self.size -= 1
-            print(f"Patient {released_patient} released.")
+            print(f"Patient {released_patient.name} released.")
 
     def current_patients(self):
         patients = []
@@ -63,6 +63,8 @@ class OperatingRoom:
         return len(patients) == self.capacity
 
 
+### Tests for this task ###
+"""
 patient1 = Patient("Ivan")
 patient2 = Patient("Kolio")
 patient3 = Patient("Mario")
@@ -71,7 +73,16 @@ op_room = OperatingRoom(3)
 
 op_room.admit_patient(patient1)
 op_room.admit_patient(patient2)
-# op_room.admit_patient(patient3)
+op_room.admit_patient(patient3)
+
+print(f"Initial patients: {op_room.current_patients()}")
+op_room.release_patient(patient3)
+print()
+print(f"Updated Patients: {op_room.current_patients()}")
+
 
 print(op_room.current_patients())
 print(op_room.is_full())
+
+"""
+
